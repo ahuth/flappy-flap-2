@@ -1,8 +1,8 @@
 {
   "name": "flappy-flap-2",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "build": "tsc && vite build",
     "dev": "vite",
