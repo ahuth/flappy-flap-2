@@ -4,7 +4,7 @@ import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import react from 'eslint-plugin-react';
 import globals from 'globals';
 
-/** @type {import('@types/eslint').Linter.FlatConfig} */
+/** @type {import('@types/eslint').Linter.Config} */
 export default [
   {
     files: ['**/*.{js,cjs,mjs,ts,tsx}'],
