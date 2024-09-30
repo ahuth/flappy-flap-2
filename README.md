@@ -1,3 +1,3 @@
-# vite-start
+# flappy-flap-2
 
-Template with Vite, React, TypeScript, and Tailwind.
+Flappy Bird, but worse. And in React.
