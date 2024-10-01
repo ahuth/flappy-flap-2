@@ -1,0 +1,21 @@
+.bird {
+  animation: flap 0.75s steps(3) infinite;
+}
+
+@keyframes flap {
+  0% {
+    background-image: url('/public/bluebird-downflap.png');
+  }
+
+  33% {
+    background-image: url('/public/bluebird-midflap.png');
+  }
+
+  66% {
+    background-image: url('/public/bluebird-upflap.png');
+  }
+
+  100% {
+    background-image: url('/public/bluebird-midflap.png');
+  }
+}
