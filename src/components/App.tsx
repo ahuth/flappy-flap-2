@@ -49,9 +49,13 @@ export default function App() {
   }, [status]);
 
   return (
-    <>
-      {status === 'gameover' && <h1>Game Over</h1>}
+    <div className="h-[500px] bg-sky-400">
+      {status === 'gameover' && (
+        <h1 className="mx-auto w-fit bg-sky-900 p-4 text-xl text-white">
+          Game Over
+        </h1>
+      )}
       <Bird style={{position: 'absolute', top: 500 - height}} />
-    </>
+    </div>
   );
 }

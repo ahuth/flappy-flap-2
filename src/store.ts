@@ -25,7 +25,8 @@ export const useStore = create<State>((set) => ({
     tick(elapsed: number) {
       set((state) => {
         const nextHeight = state.height + state.speed * elapsed;
-        if (nextHeight <= 0) {
+        // 32px (2rem / h-8) is the height of the bird.
+        if (nextHeight <= 32) {
           return {status: 'gameover'};
         }
         return {
