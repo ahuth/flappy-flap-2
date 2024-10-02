@@ -49,16 +49,11 @@ export default function App() {
   }, [status]);
 
   return (
-    <div className="h-[500px] bg-sky-400">
+    <div className="flex h-[500px] flex-col items-center bg-sky-400">
       {status === 'gameover' && (
-        <h1 className="mx-auto w-fit bg-sky-900 p-4 text-xl text-white">
-          Game Over
-        </h1>
+        <h1 className="w-fit bg-sky-900 p-4 text-xl text-white">Game Over</h1>
       )}
-      <Bird
-        className="left-[calc(50%-32px)]"
-        style={{position: 'absolute', top: 500 - height}}
-      />
+      <Bird style={{position: 'absolute', top: 500 - height}} />
     </div>
   );
 }
