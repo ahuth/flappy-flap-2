@@ -4,10 +4,11 @@ import {useStore} from '../store';
 import styles from './Bird.module.css';
 
 type Props = {
+  className?: string;
   style?: CSSProperties;
 };
 
-export default function Bird({style}: Props) {
+export default function Bird({className, style}: Props) {
   const status = useStore((state) => state.status);
   const speed = useStore((state) => state.speed);
 
@@ -16,6 +17,7 @@ export default function Bird({style}: Props) {
       className={clsx(
         "h-8 w-11 bg-[url('/redbird-midflap.png')] bg-cover",
         status === 'playing' && styles.flap,
+        className,
       )}
       style={{
         ...style,

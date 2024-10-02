@@ -55,7 +55,10 @@ export default function App() {
           Game Over
         </h1>
       )}
-      <Bird style={{position: 'absolute', top: 500 - height}} />
+      <Bird
+        className="left-[calc(50%-32px)]"
+        style={{position: 'absolute', top: 500 - height}}
+      />
     </div>
   );
 }
