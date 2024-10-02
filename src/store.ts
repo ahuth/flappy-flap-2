@@ -25,7 +25,7 @@ export const useStore = create<State>((set) => ({
       set({status: 'gameover'});
     },
     flap() {
-      bird.applyLinearImpulse({x: 0, y: 750}, bird.getPosition(), true);
+      bird.applyLinearImpulse({x: 0, y: 750}, bird.getPosition());
     },
     tick() {
       set(() => {
