@@ -6,6 +6,7 @@ type State = {
   height: number;
   speed: number;
   actions: {
+    collide(): void;
     flap(): void;
     tick(): void;
   };
@@ -20,6 +21,9 @@ export const useStore = create<State>((set) => ({
   height: bird.getPosition().y,
   speed: bird.getLinearVelocity().y,
   actions: {
+    collide() {
+      set({status: 'gameover'});
+    },
     flap() {
       bird.applyLinearImpulse({x: 0, y: 750}, bird.getPosition(), true);
     },
@@ -34,3 +38,9 @@ export const useStore = create<State>((set) => ({
     },
   },
 }));
+
+world.on('post-solve', () => {
+  // Normally we'd check to see which fixtures/bodies collided, but for now there's only one
+  // possibility.
+  useStore.getState().actions.collide();
+});
