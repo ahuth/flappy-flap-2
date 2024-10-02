@@ -14,7 +14,7 @@ export default function Bird({style}: Props) {
   return (
     <div
       className={clsx(
-        "h-8 w-11 bg-[url('/bluebird-midflap.png')] bg-cover",
+        "h-8 w-11 bg-[url('/redbird-midflap.png')] bg-cover",
         status === 'playing' && styles.flap,
       )}
       style={{
