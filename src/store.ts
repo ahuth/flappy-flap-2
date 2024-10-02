@@ -5,6 +5,7 @@ type State = {
   height: number;
   speed: number;
   actions: {
+    flap(): void;
     tick(elapsed: number): void;
   };
 };
@@ -14,6 +15,13 @@ export const useStore = create<State>((set) => ({
   height: 500,
   speed: 0,
   actions: {
+    flap() {
+      set((state) => {
+        return {
+          speed: state.speed + 25,
+        };
+      });
+    },
     tick(elapsed: number) {
       set((state) => {
         const nextHeight = state.height + state.speed * elapsed;

@@ -8,6 +8,7 @@ export default function App() {
   const height = useStore((state) => state.height);
   const lastRan = useRef(0);
 
+  // Animation loop
   useEffect(() => {
     if (status !== 'playing') {
       return;
@@ -25,6 +26,27 @@ export default function App() {
 
     return () => cancelAnimationFrame(id);
   }, [actions, status]);
+
+  // User input handlers
+  useEffect(() => {
+    if (status !== 'playing') {
+      return;
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === ' ') {
+        actions.flap();
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('touchstart', actions.flap);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('touchstart', actions.flap);
+    };
+  }, [status]);
 
   return (
     <>
