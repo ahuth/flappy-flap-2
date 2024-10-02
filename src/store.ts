@@ -1,4 +1,5 @@
 import {create} from 'zustand';
+import {world, bird} from './physics';
 
 type State = {
   status: 'playing' | 'gameover';
@@ -6,32 +7,28 @@ type State = {
   speed: number;
   actions: {
     flap(): void;
-    tick(elapsed: number): void;
+    tick(): void;
   };
 };
 
+const timeStep = 1 / 60;
+const velocityIterations = 6;
+const positionIterations = 2;
+
 export const useStore = create<State>((set) => ({
   status: 'playing',
-  height: 500,
-  speed: -50,
+  height: bird.getPosition().y,
+  speed: bird.getLinearVelocity().y,
   actions: {
     flap() {
-      set((state) => {
-        return {
-          speed: state.speed + 200,
-        };
-      });
+      bird.applyLinearImpulse({x: 0, y: 750}, bird.getPosition(), true);
     },
-    tick(elapsed: number) {
-      set((state) => {
-        const nextHeight = state.height + state.speed * elapsed;
-        // 32px (2rem / h-8) is the height of the bird.
-        if (nextHeight <= 32) {
-          return {status: 'gameover'};
-        }
+    tick() {
+      set(() => {
+        world.step(timeStep, velocityIterations, positionIterations);
         return {
-          height: state.height + state.speed * elapsed,
-          speed: state.speed - 100 * elapsed,
+          height: bird.getPosition().y,
+          speed: bird.getLinearVelocity().y,
         };
       });
     },

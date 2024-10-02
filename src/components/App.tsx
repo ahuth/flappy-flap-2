@@ -1,4 +1,4 @@
-import {useEffect, useRef} from 'react';
+import {useEffect} from 'react';
 import {useStore} from '../store';
 import Bird from './Bird';
 
@@ -6,7 +6,6 @@ export default function App() {
   const actions = useStore((state) => state.actions);
   const status = useStore((state) => state.status);
   const height = useStore((state) => state.height);
-  const lastRan = useRef(0);
 
   // Animation loop
   useEffect(() => {
@@ -16,11 +15,8 @@ export default function App() {
 
     let id = requestAnimationFrame(run);
 
-    function run(time: number) {
-      if (lastRan.current) {
-        actions.tick((time - lastRan.current) / 1000);
-      }
-      lastRan.current = time;
+    function run() {
+      actions.tick();
       id = requestAnimationFrame(run);
     }
 
