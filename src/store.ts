@@ -13,12 +13,12 @@ type State = {
 export const useStore = create<State>((set) => ({
   status: 'playing',
   height: 500,
-  speed: 0,
+  speed: -50,
   actions: {
     flap() {
       set((state) => {
         return {
-          speed: state.speed + 25,
+          speed: state.speed + 200,
         };
       });
     },
@@ -31,7 +31,7 @@ export const useStore = create<State>((set) => ({
         }
         return {
           height: state.height + state.speed * elapsed,
-          speed: state.speed - 9.8 * elapsed,
+          speed: state.speed - 100 * elapsed,
         };
       });
     },
