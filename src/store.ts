@@ -44,13 +44,11 @@ export const useStore = create<State>((set, get) => ({
       set({status: 'playing', world, bird});
     },
     tick() {
-      set(() => {
-        const {world, bird} = get();
-        world.step(timeStep, velocityIterations, positionIterations);
-        return {
-          height: bird.getPosition().y,
-          speed: bird.getLinearVelocity().y,
-        };
+      const {world, bird} = get();
+      world.step(timeStep, velocityIterations, positionIterations);
+      set({
+        height: bird.getPosition().y,
+        speed: bird.getLinearVelocity().y,
       });
     },
   },
