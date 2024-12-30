@@ -4,18 +4,18 @@
 
 @keyframes flap {
   0% {
-    background-image: url('/public/redbird-downflap.png');
+    background-image: url('/redbird-downflap.png');
   }
 
   33% {
-    background-image: url('/public/redbird-midflap.png');
+    background-image: url('/redbird-midflap.png');
   }
 
   66% {
-    background-image: url('/public/redbird-upflap.png');
+    background-image: url('/redbird-upflap.png');
   }
 
   100% {
-    background-image: url('/public/redbird-midflap.png');
+    background-image: url('/redbird-midflap.png');
   }
 }
