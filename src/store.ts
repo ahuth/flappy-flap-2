@@ -18,15 +18,14 @@ type State = {
 const timeStep = 1 / 60;
 const velocityIterations = 6;
 const positionIterations = 2;
+const {world, bird} = createWorld();
 
 export const useStore = create<State>((set, get) => ({
   status: 'playing',
   height: 0,
   speed: 0,
-  // @ts-expect-error We'll create this in the start action.
-  world: null,
-  // @ts-expect-error We'll create this in the start action.
-  bird: null,
+  world,
+  bird,
   actions: {
     collide() {
       const {world, actions} = get();
